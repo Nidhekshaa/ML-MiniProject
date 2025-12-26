@@ -17,10 +17,11 @@ def predict():
     # Ensure all fields are present
     try:
         features = np.array([[ 
-            data['age'], data['sex'], data['cp'], data['trestbps'], data['chol'],
-            data['fbs'], data['restecg'], data['thalach'], data['exang'],
-            data['oldpeak'], data['slope'], data['ca'], data['thal']
-        ]])
+        float(data['age']), float(data['sex']), float(data['cp']), float(data['trestbps']), float(data['chol']),
+        float(data['fbs']), float(data['restecg']), float(data['thalach']), float(data['exang']),
+        float(data['oldpeak']), float(data['slope']), float(data['ca']), float(data['thal'])
+    ]])
+
     except KeyError as e:
         return jsonify({'error': f'Missing field: {str(e)}'}), 400
 
@@ -31,4 +32,4 @@ def predict():
     return jsonify({'prediction': prediction, 'probability': float(probability)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
