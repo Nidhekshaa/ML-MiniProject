@@ -51,7 +51,7 @@ export default function HeartForm() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch("http://localhost:5000/predict", {
+    const res = await fetch("https://heart-disease-prediction-x98a.onrender.com/predict", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

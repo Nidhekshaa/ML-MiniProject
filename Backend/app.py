@@ -10,6 +10,10 @@ CORS(app)
 with open('heart_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
+@app.route('/', methods=['GET'])
+def home():
+    return "Server is working", 200
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
